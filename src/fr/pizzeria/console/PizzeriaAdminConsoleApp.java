@@ -3,12 +3,14 @@ package fr.pizzeria.console;
 import java.util.Scanner;
 
 import fr.pizzeria.model.Pizza;
+import fr.pizzeria.dao.PizzaDaoImpl;
 
 public class PizzeriaAdminConsoleApp {
 	
 	static boolean running = true;
 	static Scanner sc = new Scanner(System.in);
-	static Pizza[] pizzas = new Pizza[100];
+	//static Pizza[] pizzas = new Pizza[100];
+	static PizzaDaoImpl pizzas;
 
 
 	public static void main(String[] args) {
@@ -41,19 +43,23 @@ public class PizzeriaAdminConsoleApp {
 		switch(choix) {
 		case "1": 
 			System.out.println("Liste des pizzas");
-			listPizzas();
+			//listPizzas();
+			new ListerPizzasOptionMenu(pizzas).execute();
 			break;
 		case "2": 
 			System.out.println("Ajout d'une nouvelle pizza");
-			addPizza();
+			//addPizza();
+			new AjouterPizzaOptionMenu(pizzas).execute();
 			break;
 		case "3":
 			System.out.println("Mise à jour d'une pizza");
-			updatePizza();
+			//updatePizza();
+			new ModifierPizzaOptionMenu(pizzas).execute();
 			break;
 		case "4": 
 			System.out.println("Suppression d'une pizza");
-			deletePizza();
+			//deletePizza();
+			new SupprimerPizzaOptionMenu(pizzas).execute();
 			break;
 		case "99": 
 			System.out.println("Au revoir !");
@@ -62,69 +68,5 @@ public class PizzeriaAdminConsoleApp {
 		default:
 			System.out.println("Veuillez entrer une option valide.");
 		}
-	}
-	
-	public static void listPizzas() { //Option 1
-		for (int i=0; i < pizzas.length; i++) {
-			if (pizzas[i] != null) {				
-				System.out.println(pizzas[i].toString());
-			}
-		}
-	}
-	
-	public static void addPizza() { //Option 2
-		System.out.println("Veuillez saisir le code :");
-		String code = sc.nextLine();
-		System.out.println("Veuillez saisir le nom (sans espace) :");
-		String nom = sc.nextLine();
-		System.out.println("Veuillez saisir le prix :");
-		double prix = Double.valueOf(sc.nextLine());
-		pizzas[Pizza.getNbPizzas()] = new Pizza(code, nom, prix);
-	}
-	
-	public static void updatePizza() { //Option 3
-		System.out.println("Entrez le code de la pizza que vous voulez modifier :");
-		listPizzas();
-		String cible = sc.nextLine();
-		boolean found = false;
-		for (int i=0; i<pizzas.length; i++) {
-			if (pizzas[i] != null && pizzas[i].getCode().equals(cible)) {
-				System.out.println("Veuillez saisir le code :");
-				String code = sc.nextLine();
-				System.out.println("Veuillez saisir le nom (sans espace) :");
-				String nom = sc.nextLine();
-				System.out.println("Veuillez saisir le prix :");
-				double prix = Double.valueOf(sc.nextLine());
-				pizzas[i].setCode(code);
-				pizzas[i].setNom(nom);
-				pizzas[i].setPrix(prix);
-				found = true;
-				break;
-			}
-		}
-		if (!found) {
-			System.out.println("Pizza non trouvée");
-		}
-	}
-	
-	public static void deletePizza() { //Option 4
-		System.out.println("Entrez le code de la pizza que vous voulez supprimer :");
-		listPizzas();
-		String cible = sc.nextLine();
-		for(int i=0; i<pizzas.length; i++) {
-			if (pizzas[i] != null && pizzas[i].getCode().equals(cible)) {
-				for (int j=i; j<pizzas.length-1; j++) {
-					if (pizzas[j+1] != null) {
-						pizzas[j] = pizzas[j+1];
-					} else {
-						pizzas[Pizza.getNbPizzas()-1].remove();
-						pizzas[j] = null;
-						break;
-					}
-				}
-				break;
-			}
-		}
-		
 	}
 }
