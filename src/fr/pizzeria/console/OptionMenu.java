@@ -1,7 +1,19 @@
 package fr.pizzeria.console;
 
-public abstract class OptionMenu {
+import fr.pizzeria.exception.StockageException;
 
-	public abstract void execute();
+public abstract class OptionMenu {
+	
+	String libelle;
+
+	public String getLibelle() {
+		return libelle;
+	}
+
+	public void setLibelle(String libelle) {
+		this.libelle = libelle;
+	}
+
+	public abstract boolean execute() throws StockageException;
 	
 }

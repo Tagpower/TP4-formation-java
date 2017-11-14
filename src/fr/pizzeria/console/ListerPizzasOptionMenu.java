@@ -8,14 +8,16 @@ public class ListerPizzasOptionMenu extends OptionMenu {
 	
 	public ListerPizzasOptionMenu(PizzaDaoImpl dao) {
 		this.dao = dao;
+		libelle = "1) Lister les pizzas";
 	}
 	
-	public void execute() {
+	public boolean execute() {
 		for (Pizza p : dao.listAllPizzas()) {
 			if (p != null) {				
 				System.out.println(p.toString());
 			}
 		}
+		return true;
 	}
 	
 }

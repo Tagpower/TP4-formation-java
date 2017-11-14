@@ -43,14 +43,9 @@ public class Pizza {
 		this.prix = prix;
 	}
 	
-	public void remove() {
+	public Pizza remove() {
 		nbPizzas--;
-		try {
-			this.finalize();
-		} catch (Throwable e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
+		return null;
 	}
 	
 	public String toString() {
