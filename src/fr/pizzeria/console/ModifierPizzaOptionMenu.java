@@ -3,7 +3,9 @@ package fr.pizzeria.console;
 import java.util.Scanner;
 
 import fr.pizzeria.dao.PizzaDaoImpl;
+import fr.pizzeria.exception.SavePizzaException;
 import fr.pizzeria.exception.UpdatePizzaException;
+import fr.pizzeria.model.CategoriePizza;
 import fr.pizzeria.model.Pizza;
 
 public class ModifierPizzaOptionMenu extends OptionMenu {
@@ -28,11 +30,29 @@ public class ModifierPizzaOptionMenu extends OptionMenu {
 		if (dao.findPizza(cible) != null) {			
 			System.out.println("Veuillez saisir le code :");
 			String code = sc.nextLine();
+			if (code.trim().equals("")) {
+				throw new UpdatePizzaException("Le code ne doit pas être vide");
+			}
 			System.out.println("Veuillez saisir le nom (sans espace) :");
 			String nom = sc.nextLine();
 			System.out.println("Veuillez saisir le prix :");
 			double prix = Double.valueOf(sc.nextLine());
-			found = dao.updatePizza(cible, new Pizza(code, nom, prix));
+			System.out.println("Veuillez saisir la catégorie de la pizza :\n(1=Viande, 2=Poisson, 3=Sans viande)");
+			CategoriePizza categ;
+			switch (Integer.parseInt(sc.nextLine())) {
+			case 1:
+				categ = CategoriePizza.VIANDE;
+				break;
+			case 2:
+				categ = CategoriePizza.POISSON;
+				break;
+			case 3:
+				categ = CategoriePizza.SANS_VIANDE;
+				break;
+			default:
+				throw new UpdatePizzaException("Catégorie incorrecte");
+			}
+			found = dao.updatePizza(cible, new Pizza(code, nom, prix, categ));
 			//found = true;
 		} else {
 			throw new UpdatePizzaException("La pizza " + cible + " n'existe pas");

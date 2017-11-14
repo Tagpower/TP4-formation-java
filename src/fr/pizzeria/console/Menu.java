@@ -7,6 +7,7 @@ import java.util.Scanner;
 import fr.pizzeria.dao.PizzaDaoImpl;
 import fr.pizzeria.exception.SavePizzaException;
 import fr.pizzeria.exception.StockageException;
+import fr.pizzeria.model.CategoriePizza;
 import fr.pizzeria.model.Pizza;
 
 public class Menu {
@@ -20,14 +21,14 @@ public class Menu {
 		dao = new PizzaDaoImpl();
 		
 		try {
-			dao.saveNewPizza(new Pizza("PEP", "Pepperoni", 12.5));
-			dao.saveNewPizza(new Pizza("MAR", "Margharita", 14));
-			dao.saveNewPizza(new Pizza("REIN", "La Reine", 11.5));
-			dao.saveNewPizza(new Pizza("FRO", "La 4 Fromages", 12));
-			dao.saveNewPizza(new Pizza("CAN", "La cannibale", 12.5));
-			dao.saveNewPizza(new Pizza("SAV", "La savoyarde", 13));
-			dao.saveNewPizza(new Pizza("ORI", "L'orientale", 13.5));
-			dao.saveNewPizza(new Pizza("IND", "L'indienne", 14));
+			dao.saveNewPizza(new Pizza("PEP", "Pepperoni", 12.5, CategoriePizza.VIANDE));
+			dao.saveNewPizza(new Pizza("MAR", "Margharita", 14, CategoriePizza.VIANDE));
+			dao.saveNewPizza(new Pizza("REIN", "La Reine", 11.5, CategoriePizza.VIANDE));
+			dao.saveNewPizza(new Pizza("FRO", "La 4 Fromages", 12, CategoriePizza.SANS_VIANDE));
+			dao.saveNewPizza(new Pizza("CAN", "La cannibale", 12.5, CategoriePizza.VIANDE));
+			dao.saveNewPizza(new Pizza("SAV", "La savoyarde", 13, CategoriePizza.VIANDE));
+			dao.saveNewPizza(new Pizza("ORI", "L'orientale", 13.5, CategoriePizza.VIANDE));
+			dao.saveNewPizza(new Pizza("IND", "L'indienne", 14, CategoriePizza.VIANDE));
 		} catch (SavePizzaException e) {
 			e.printStackTrace();
 		}

@@ -2,17 +2,19 @@ package fr.pizzeria.model;
 
 public class Pizza {
 	private int id;
+	@ToString
 	private String code;
 	private String nom;
 	private double prix;
-	
+	private CategoriePizza categorie;
 	private static int nbPizzas;
 	
-	public Pizza(String code, String nom, double prix) {
+	public Pizza(String code, String nom, double prix, CategoriePizza categ) {
 		this.id = nbPizzas++;
 		this.code = code;
 		this.nom = nom;
 		this.prix = prix;
+		this.categorie = categ;
 	}
 	
 	public static int getNbPizzas() {
@@ -43,12 +45,21 @@ public class Pizza {
 		this.prix = prix;
 	}
 	
+	public CategoriePizza getCategorie() {
+		return categorie;
+	}
+
+	public void setCategorie(CategoriePizza categorie) {
+		this.categorie = categorie;
+	}
+
+	
 	public Pizza remove() {
 		nbPizzas--;
 		return null;
 	}
 	
 	public String toString() {
-		return "" + this.code + " -> " + this.nom + " (" +  this.prix + "€)";
+		return "" + this.code + " -> " + this.nom + " - " + this.categorie.getCategorie() + " (" +  this.prix + " €)";
 	}
 }
