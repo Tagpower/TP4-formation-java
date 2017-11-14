@@ -15,14 +15,17 @@ public class PizzeriaAdminConsoleApp {
 
 	public static void main(String[] args) {
 		
-		pizzas[0] = new Pizza("PEP", "Pepperoni", 12.5);
-		pizzas[1] = new Pizza("MAR", "Margharita", 14);
-		pizzas[2] = new Pizza("REIN", "La Reine", 11.5);
-		pizzas[3] = new Pizza("FRO", "La 4 Fromages", 12);
-		pizzas[4] = new Pizza("CAN", "La cannibale", 12.5);
-		pizzas[5] = new Pizza("SAV", "La savoyarde", 13);
-		pizzas[6] = new Pizza("ORI", "L'orientale", 13.5);
-		pizzas[7] = new Pizza("IND", "L'indienne", 14);
+		pizzas = new PizzaDaoImpl();
+		
+		
+		pizzas.saveNewPizza(new Pizza("PEP", "Pepperoni", 12.5));
+		pizzas.saveNewPizza(new Pizza("MAR", "Margharita", 14));
+		pizzas.saveNewPizza(new Pizza("REIN", "La Reine", 11.5));
+		pizzas.saveNewPizza(new Pizza("FRO", "La 4 Fromages", 12));
+		pizzas.saveNewPizza(new Pizza("CAN", "La cannibale", 12.5));
+		pizzas.saveNewPizza(new Pizza("SAV", "La savoyarde", 13));
+		pizzas.saveNewPizza(new Pizza("ORI", "L'orientale", 13.5));
+		pizzas.saveNewPizza(new Pizza("IND", "L'indienne", 14));
 		while (running) {
 			callMenu();
 		}
