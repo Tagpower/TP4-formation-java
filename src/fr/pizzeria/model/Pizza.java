@@ -63,12 +63,6 @@ public class Pizza {
 	public void setCategorie(CategoriePizza categorie) {
 		this.categorie = categorie;
 	}
-
-	
-	public Pizza remove() {
-		nbPizzas--;
-		return null;
-	}
 	
 	public String toString() {
 		StringBuilder sb = new StringBuilder();

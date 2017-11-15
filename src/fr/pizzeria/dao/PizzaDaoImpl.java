@@ -23,16 +23,7 @@ public class PizzaDaoImpl implements IPizzaDao {
 
 	@Override
 	public boolean saveNewPizza(Pizza p) throws SavePizzaException {
-		if (findPizza(p.getCode()) != null) {
-			throw new SavePizzaException("Il existe déjà une pizza dont le code est " + p.getCode());
-		}
-		
-		if (p.getPrix() > 0) {
-			pizzas.add(p);
-			//pizzas[Pizza.getNbPizzas()] = p;
-		} else {
-			throw new SavePizzaException("Le prix ne peut pas être négatif");
-		}
+		pizzas.add(p);
 		return true;
 	}
 
@@ -53,7 +44,7 @@ public class PizzaDaoImpl implements IPizzaDao {
 		for(Pizza p : pizzas) {
 			if (p.getCode().equals(codePizza)) {
 				if (findPizza(pizza.getCode()) != null) {
-					throw new UpdatePizzaException("Ilexiste déjà une pizza dont le code est " + pizza.getCode());
+					throw new UpdatePizzaException("Il existe déjà une pizza dont le code est " + pizza.getCode());
 				}
 				p.setCode(pizza.getCode());
 				p.setNom(pizza.getNom());
@@ -74,7 +65,6 @@ public class PizzaDaoImpl implements IPizzaDao {
 		for(Pizza p : pizzas) {
 			if (p.getCode().equals(codePizza)) {
 				pizzas.remove(p);
-				p = p.remove();
 				found = true;
 				break;
 			}

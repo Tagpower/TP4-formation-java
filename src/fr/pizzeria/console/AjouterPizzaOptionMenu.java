@@ -1,6 +1,5 @@
 package fr.pizzeria.console;
 
-import java.util.NoSuchElementException;
 import java.util.Scanner;
 
 import fr.pizzeria.dao.PizzaDaoImpl;
@@ -24,10 +23,16 @@ public class AjouterPizzaOptionMenu extends OptionMenu {
 		if (code.trim().equals("")) {
 			throw new SavePizzaException("Le code ne doit pas être vide");				
 		}
+		if (dao.findPizza(code) != null) {
+			throw new SavePizzaException("Il existe déjà une pizza dont le code est " + code);
+		}
 		System.out.println("Veuillez saisir le nom (sans espace) :");
 		String nom = sc.nextLine();
 		System.out.println("Veuillez saisir le prix :");
 		double prix = Double.valueOf(sc.nextLine());
+		if (prix <= 0) {
+			throw new SavePizzaException("Le prix ne peut pas être négatif");
+		}
 		System.out.println("Veuillez saisir la catégorie de la pizza :\n(1=Viande, 2=Poisson, 3=Sans viande)");
 		CategoriePizza categ;
 		switch (Integer.parseInt(sc.nextLine())) {
