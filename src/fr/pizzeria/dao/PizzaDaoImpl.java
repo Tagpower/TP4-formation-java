@@ -52,6 +52,9 @@ public class PizzaDaoImpl implements IPizzaDao {
 		boolean found = false;
 		for(Pizza p : pizzas) {
 			if (p.getCode().equals(codePizza)) {
+				if (findPizza(pizza.getCode()) != null) {
+					throw new UpdatePizzaException("Ilexiste déjà une pizza dont le code est " + pizza.getCode());
+				}
 				p.setCode(pizza.getCode());
 				p.setNom(pizza.getNom());
 				p.setPrix(pizza.getPrix());
