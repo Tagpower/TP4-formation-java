@@ -1,8 +1,10 @@
 package fr.pizzeria.console;
 
 import java.io.BufferedReader;
+import java.io.BufferedWriter;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
+import java.io.FileWriter;
 import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
@@ -90,6 +92,39 @@ public class Menu {
 
 	}
 	
+	//TODO sauvegarder le fichier
+	public void sauvegarderPizzas() {
+		BufferedWriter buf = null;
+		FileWriter fw = null;
+		
+		try {
+			String res = "test"; //String à enregistrer
+					
+			
+			fw = new FileWriter("pizzatest.csv");
+			buf = new BufferedWriter(fw);
+			buf.write(res);
+			
+			System.out.println("Fichier sauvegardé.");
+			
+			
+		} catch (IOException e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				if (buf != null) {
+					buf.close();
+				}
+				if (fw != null) {
+					fw.close();
+				}
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
+		}
+		
+	}
+	
 	
 	
 	public void afficher() {
@@ -117,6 +152,7 @@ public class Menu {
 				System.out.println(e.getMessage());
 			}
 		}
+		sauvegarderPizzas();
 	}
 	
 	
