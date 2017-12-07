@@ -1,12 +1,13 @@
 package main.java.fr.pizzeria.console;
 
+import main.java.fr.pizzeria.dao.IPizzaDao;
 import main.java.fr.pizzeria.dao.PizzaDaoImpl;
 import main.java.fr.pizzeria.model.Pizza;
 
 public class ListerPizzasOptionMenu extends OptionMenu {
-	private PizzaDaoImpl dao;
+	private IPizzaDao dao;
 	
-	public ListerPizzasOptionMenu(PizzaDaoImpl dao) {
+	public ListerPizzasOptionMenu(IPizzaDao dao) {
 		this.dao = dao;
 		libelle = "1) Lister les pizzas";
 	}

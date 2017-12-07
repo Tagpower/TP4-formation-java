@@ -2,6 +2,7 @@ package main.java.fr.pizzeria.console;
 
 import java.util.Scanner;
 
+import main.java.fr.pizzeria.dao.IPizzaDao;
 import main.java.fr.pizzeria.dao.PizzaDaoImpl;
 import main.java.fr.pizzeria.exception.SavePizzaException;
 import main.java.fr.pizzeria.model.CategoriePizza;
@@ -10,9 +11,9 @@ import main.java.fr.pizzeria.model.Pizza;
 
 
 public class AjouterPizzaOptionMenu extends OptionMenu {
-	private PizzaDaoImpl dao;
+	private IPizzaDao dao;
 
-	public AjouterPizzaOptionMenu(PizzaDaoImpl dao) {
+	public AjouterPizzaOptionMenu(IPizzaDao dao) {
 		this.dao = dao;
 		this.libelle = "2) Ajouter une nouvelle pizza";
 	}

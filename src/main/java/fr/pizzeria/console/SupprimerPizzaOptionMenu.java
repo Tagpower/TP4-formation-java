@@ -2,15 +2,16 @@ package main.java.fr.pizzeria.console;
 
 import java.util.Scanner;
 
+import main.java.fr.pizzeria.dao.IPizzaDao;
 import main.java.fr.pizzeria.dao.PizzaDaoImpl;
 import main.java.fr.pizzeria.exception.DeletePizzaException;
 import main.java.fr.pizzeria.model.Pizza;
 
 public class SupprimerPizzaOptionMenu extends OptionMenu {
 
-	private PizzaDaoImpl dao;
+	private IPizzaDao dao;
 	
-	public SupprimerPizzaOptionMenu(PizzaDaoImpl dao) {
+	public SupprimerPizzaOptionMenu(IPizzaDao dao) {
 		this.dao = dao;
 		libelle = "4) Supprimer une pizza";
 	}
