@@ -1,0 +1,16 @@
+PEP;Pepperoni;12.5;VIANDE
+MAR;Margharita;14;VIANDE
+REI;La Reine;11.5;VIANDE
+FRO;La 4 Fromages;12;SANS_VIANDE
+CAN;La cannibale;12.5;VIANDE
+SAV;La savoyarde;13;VIANDE
+ORI;L'orientale;13.5;VIANDE
+IND;L'indienne;14;VIANDE
+AAA;bbb;eee;VIANDE
+BBB;uuuu;333333;TRUC
+THO;Thon;12;POISSON
+AME;Américaine;13.5;VIANDE
+VEG;Végétarienne;12;SANS_VIANDE
+KEB;Kebab;13;VIANDE
+BLBL;Blblblblblbl;212;SANS_VIANDE
+
