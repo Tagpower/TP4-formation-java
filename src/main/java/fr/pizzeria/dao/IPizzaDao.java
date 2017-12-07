@@ -13,7 +13,7 @@ public interface IPizzaDao {
 
 	List<Pizza> listAllPizzas();
 	
-	Pizza findPizza(String codePizza) throws StockageException;
+	Pizza findPizza(String codePizza); 
 	
 	boolean saveNewPizza(Pizza p) throws SavePizzaException;
 	

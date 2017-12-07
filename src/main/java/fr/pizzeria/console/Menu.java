@@ -11,7 +11,9 @@ import java.util.Map;
 import java.util.Scanner;
 import java.util.StringTokenizer;
 
+import main.java.fr.pizzeria.dao.IPizzaDao;
 import main.java.fr.pizzeria.dao.PizzaDaoImpl;
+import main.java.fr.pizzeria.dao.db.PizzaDaoBaseImpl;
 import main.java.fr.pizzeria.exception.SavePizzaException;
 import main.java.fr.pizzeria.exception.StockageException;
 import main.java.fr.pizzeria.model.CategoriePizza;
@@ -20,12 +22,13 @@ import main.java.fr.pizzeria.model.Pizza;
 public class Menu {
 	
 	private Map<Integer, OptionMenu> actions;
-	private PizzaDaoImpl dao;
+	private IPizzaDao dao;
 	
 
 
 	public Menu() {
-		dao = new PizzaDaoImpl();
+		//dao = new PizzaDaoImpl();
+		dao = new PizzaDaoBaseImpl();
 		int lineNumber = 0;
 
 		try { //Lecture du fichier de données

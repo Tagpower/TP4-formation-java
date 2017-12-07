@@ -28,6 +28,14 @@ public class Pizza {
 		this.prix = prix;
 	}
 	
+	public Pizza(int id, String code, String nom, double prix, CategoriePizza categ) {
+		this.id = id;
+		this.code = code;
+		this.nom = nom;
+		this.categorie = categ;
+		this.prix = prix;
+	}
+	
 	public static int getNbPizzas() {
 		return nbPizzas;
 	}
